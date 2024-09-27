@@ -18,7 +18,7 @@ dataset_defaults = {
         'print_iters': 2000
     },
     'camelyon': {
-        'epochs': 1,
+        'epochs': 100,
         'batch_size': 32,
         'optimiser': 'SGD',
         'optimiser_args': {

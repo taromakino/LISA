@@ -19,7 +19,7 @@ class Model(nn.Module):
     def __init__(self, args, weights):
         super(Model, self).__init__()
         self.num_classes = NUM_CLASSES
-        self.enc = densenet121(pretrained=False).features # remove fc layer
+        self.enc = densenet121().features # remove fc layer
         self.classifier = nn.Linear(1024, self.num_classes)
         if weights is not None:
             self.load_state_dict(deepcopy(weights))
@@ -29,7 +29,7 @@ class Model(nn.Module):
 
     @staticmethod
     def getDataLoaders(args, device):
-        dataset = Camelyon17Dataset(root_dir=args.data_dir, download=True)
+        dataset = Camelyon17Dataset(root_dir=args.data_dir)
         transform = transforms.Compose([
             transforms.Resize((224, 224)),
             transforms.ToTensor(),
